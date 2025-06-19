@@ -1,2 +1,2 @@
-# Red Flags JavaScript Game
+# Red Flags JavaScript Game 💌
 
