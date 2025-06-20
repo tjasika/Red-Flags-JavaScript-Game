@@ -1,80 +1,158 @@
 const questions = [
     //red flags
-    {quote: `I'm just not ready for a relationship rn`, redflag: true},
-    {quote: `I have to focus on myself`, redflag: true},
-    {quote: `I've been really busy`, redflag: true},
-    {quote: `She's just a friend`, redflag: true},
-    {quote: `You're overreacting`, redflag: true},
-    {quote: `Why are you so clingy?`, redflag: true},
-    {quote: `Why are you making such a big deal out of this?`, redflag: true},
-    {quote: `I'm not really good at relationships`, redflag: true},
-    {quote: `You deserve better`, redflag: true},
-    {quote: `Why are you still yapping?`, redflag: true},
-    {quote: `You're too sensitive`, redflag: true},
-    {quote: `I'm not looking for anything serious rn`, redflag: true},
-    {quote: `All my exes are crazy`, redflag: true},
-    {quote: `You're just a mess of emotions`, redflag: true},
-    {quote: `This closeness is just not what I need right now`, redflag: true},
-    {quote: `You always want to argue`, redflag: true},
-    {quote: `You're the only girl I talk to, I swear`, redflag: true},
-    {quote: `I'm not like other guys`, redflag: true},
-    {quote: `I don't know what you want me to say`, redflag: true},
-    {quote: `When I said I love you, I didn’t really mean it — I was just in the moment.`, redflag: true},
-    {quote: `I don't really feel anything when I kiss you`, redflag: true},
-    {quote: `I didn’t think you’d take it so seriously`, redflag: true},
-    {quote: `I said I <i>hoped</i> we’d last — I never said we would`, redflag: true},
-    {quote: `I like you... I just don’t want to define anything`, redflag: true},
-    {quote: `I meant it <i>in the moment</i>`, redflag: true},
-    {quote: `You expect me to go blind every time a girl walks by?`, redflag: true},
-    {quote: `You're crazy`, redflag: true},
-    {quote: `We're just...hanging out`, redflag: true},
-    {quote: `You're not like other girls`, redflag: true},
-    {quote: `It's hard for me to talk about my feelings`, redflag: true},
-    {quote: `What, I can't make a joke now?`, redflag: true},
-    {quote: `I'm not mean, I'm just being honest`, redflag: true},
-    {quote: `Believe whatever you want`, redflag: true},
-
+    {quote: `"I'm just not ready for a relationship rn"`, redflag: true},
+    {quote: `"I have to focus on myself"`, redflag: true},
+    {quote: `"I've been really busy"`, redflag: true},
+    {quote: `"She's just a friend"`, redflag: true},
+    {quote: `"You're overreacting"`, redflag: true},
+    {quote: `"Why are you so clingy?"`, redflag: true},
+    {quote: `"Why are you making such a big deal out of this?"`, redflag: true},
+    {quote: `"I'm not really good at relationships"`, redflag: true},
+    {quote: `"You deserve better"`, redflag: true},
+    {quote: `"Why are you still yapping?"`, redflag: true},
+    {quote: `"You're too sensitive"`, redflag: true},
+    {quote: `"I'm not looking for anything serious rn"`, redflag: true},
+    {quote: `"All my exes are crazy"`, redflag: true},
+    {quote: `"You're just a mess of emotions"`, redflag: true},
+    {quote: `"This closeness is just not what I need right now"`, redflag: true},
+    {quote: `"You always want to argue"`, redflag: true},
+    {quote: `"You're the only girl I talk to, I swear"`, redflag: true},
+    {quote: `"I'm not like other guys"`, redflag: true},
+    {quote: `"I don't know what you want me to say"`, redflag: true},
+    {quote: `"When I said I love you, I didn’t really mean it — It was just in the moment."`, redflag: true},
+    {quote: `"I don't really feel anything when I kiss you"`, redflag: true},
+    {quote: `"I didn’t think you’d take it so seriously"`, redflag: true},
+    {quote: `"I said I <i>hoped</i> we’d last — I never said we would"`, redflag: true},
+    {quote: `"I like you... I just don’t want to define anything"`, redflag: true},
+    {quote: `"I meant it <i>in the moment</i>"`, redflag: true},
+    {quote: `"You expect me to go blind every time a girl walks by?"`, redflag: true},
+    {quote: `"You're crazy"`, redflag: true},
+    {quote: `"We're just...hanging out"`, redflag: true},
+    {quote: `"You're not like other girls"`, redflag: true},
+    {quote: `"It's hard for me to talk about my feelings"`, redflag: true},
+    {quote: `"What, I can't make a joke now?"`, redflag: true},
+    {quote: `"I'm not mean, I'm just being honest"`, redflag: true},
+    {quote: `"Believe whatever you want"`, redflag: true},
 
     //green flags
-    {quote: "I’m really into open communication.", redflag: false},
-    {quote: "I respect your boundaries", redflag: false},
-    {quote: "I want us to be honest with each other.", redflag: false},
-    {quote: "I’m excited to get to know you better", redflag: false},
-    {quote: "How do you feel about that?", redflag: false},
-    {quote: "I’m looking for a meaningful connection.", redflag: false},
-    {quote: "I believe in teamwork in a relationship", redflag: false},
-    {quote: "I care about your happiness", redflag: false},
-    {quote: "Let’s build this together", redflag: false},
-    {quote: "Your feelings matter to me", redflag: false},
-    {quote: "I’m here when you need me", redflag: false},
-    {quote: "I want us both to feel comfortable", redflag: false},
-    {quote: "Let's work through issues together", redflag: false},
-    {quote: "Let’s talk about how we both feel — I’m listening.", redflag: false},
-    {quote: "You never have to earn my attention. It’s already yours", redflag: false},
-    {quote: "You’re not ‘too much’ — you’re honest, and I appreciate that", redflag: false},
-    {quote: "If something’s bothering you, I want to know. We’re a team", redflag: false},
-    {quote: "You deserve consistency, and that’s what I’m giving.", redflag: false},
-    {quote: "I want to make you feel loved, not confused.", redflag: false},
-    {quote: "I'm proud of you", redflag: false},
-    {quote: "We’re on the same team", redflag: false},
-    {quote: "I’ll always choose communication over silence", redflag: false},
-    {quote: "You’re not just someone I’m dating. You’re someone I value", redflag: false},
-    {quote: "I love seeing you happy — your joy matters to me.", redflag: false},
-    {quote: "You never have to question how I feel about you", redflag: false},
-    {quote: "Let me know what makes you feel safe — I want to get it right.", redflag: false},
-    {quote: "I love how you think. Tell me more.", redflag: false},
-    {quote: "I’m not perfect, but I’m willing to work through things together.", redflag: false},
-    {quote: "I’m proud to be with you. I want people to know we’re together", redflag: false},
-    {quote: "Your boundaries are valid — thanks for trusting me with them", redflag: false},
-    {quote: "I'm not afraid of the hard conversations. They're part of real connection", redflag: false},
-    {quote: "I'm here for the good days and the hard ones — not just when it's easy.", redflag: false},
-    {quote: "I admire how passionate you are — it makes me want to support you even more", redflag: false},
+    {quote: `"I’m really into open communication."`, redflag: false},
+    {quote: `"I respect your boundaries"`, redflag: false},
+    {quote: `"I want us to be honest with each other."`, redflag: false},
+    {quote: `"I’m excited to get to know you better"`, redflag: false},
+    {quote: `"How do you feel about that?"`, redflag: false},
+    {quote: `"I’m looking for a meaningful connection."`, redflag: false},
+    {quote: `"I believe in teamwork in a relationship"`, redflag: false},
+    {quote: `"I care about your happiness"`, redflag: false},
+    {quote: `"Let’s build this together"`, redflag: false},
+    {quote: `"Your feelings matter to me"`, redflag: false},
+    {quote: `"I’m here when you need me"`, redflag: false},
+    {quote: `"I want us both to feel comfortable"`, redflag: false},
+    {quote: `"Let's work through issues together"`, redflag: false},
+    {quote: `"Let’s talk about how we both feel — I’m listening."`, redflag: false},
+    {quote: `"You never have to earn my attention. It’s already yours"`, redflag: false},
+    {quote: `"You’re not ‘too much’ — you’re honest, and I appreciate that"`, redflag: false},
+    {quote: `"If something’s bothering you, I want to know. We’re a team"`, redflag: false},
+    {quote: `"You deserve consistency, and that’s what I’m giving."`, redflag: false},
+    {quote: `"I want to make you feel loved, not confused."`, redflag: false},
+    {quote: `"I'm proud of you"`, redflag: false},
+    {quote: `"We’re on the same team"`, redflag: false},
+    {quote: `"I’ll always choose communication over silence"`, redflag: false},
+    {quote: `"You’re not just someone I’m dating. You’re someone I value"`, redflag: false},
+    {quote: `"I love seeing you happy — your joy matters to me."`, redflag: false},
+    {quote: `"You never have to question how I feel about you"`, redflag: false},
+    {quote: `"Let me know what makes you feel safe — I want to get it right."`, redflag: false},
+    {quote: `"I love how you think. Tell me more."`, redflag: false},
+    {quote: `"I’m not perfect, but I’m willing to work through things together."`, redflag: false},
+    {quote: `"I’m proud to be with you. I want people to know we’re together"`, redflag: false},
+    {quote: `"Your boundaries are valid — thanks for trusting me with them"`, redflag: false},
+    {quote: `"I'm not afraid of the hard conversations. They're part of real connection"`, redflag: false},
+    {quote: `"I'm here for the good days and the hard ones — not just when it's easy."`, redflag: false},
+    {quote: `"I admire how passionate you are — it makes me want to support you even more"`, redflag: false}
+];
 
+const positiveFeedbacks = [
+    `Your therapist would be proud`,
+    `You've clearly been through some character development`,
+    `Protecting your peace like a pro`,
+    `A queen never settles for less`,
+    `The group chat would agree`,
+    `We've all met that guy`,
+    `Icon behaviour`,
+    `We don't chase, we choose`,
+    `You didn’t fall for it — growth!`
+];
+
+const negativeFeedbacks = [
+    `Girl, not <i>again</i>...`,
+    `You just gave him a second chance...`,
+    `We need to have a talk`,
+    `And you <i>believed</i> that?!`,
+    `You're not wrong… you're just in denial`,
+    `He <i>literally</i> said that to six other women this week`,
+    `And now you’re explaining basic empathy... again`,
+    `And just like that, you're writing him a paragraph`,
+    `I thought we were past that`
 ];
 
 const quoteElement = document.getElementById('quote');
-let index = Math.floor(Math.random() * questions.length)
+const redButton = document.getElementById('red-flag');
+const greenButton = document.getElementById('green-flag');
+const nextButton = document.getElementById('next-btn');
 
-document.addEventListener('DOMContentLoaded', function() {
+const roundInfo = document.getElementsByClassName('round-info');
+
+
+//shuffle quotes, display first 10
+//timer bar
+//checking for correct answers:
+//redflag: true -> Red Button =  correct
+//redflag: false -> Green Button = correct
+
+let currentIndex = 0;
+let score = 0;
+let mistakes = 0;
+let currentQuestion = null;
+let selectedQuotes = [];
+
+shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) { 
+    const j = Math.floor(Math.random() * (i + 1));         
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+}
+}
+
+start = () => {
+    shuffle(questions);
+    selectedQuotes = questions.slice(0, 10); // Take only 10
+    currentIndex = 0;
+    score = 0;
+    mistakes = 0;
+    nextButton.style.display = "none";
+    showQuote();
+}
+
+showQuote = () => {
+    if(currentIndex > 10 || mistakes >= 4) {
+        endGame();
+        return;
+    }
+    let currentQuestion = selectedQuotes[currentIndex];
+    let round = currentIndex + 1;
+    roundInfo.innerHTML = `Round ${round} of 10`;
+    quoteElement.innerHTML = currentQuestion.quote;
+
+    redButton.disabled = false;
+    greenButton.disabled = false;
+    nextButton.style.display = "none";
+}
+
+endGame = () => {
+
+}
+
+nextButton.addEventListener('click', () => {
+    let index = Math.floor(Math.random() * questions.length)
     quoteElement.innerHTML = questions[index].quote;
-})
+});
