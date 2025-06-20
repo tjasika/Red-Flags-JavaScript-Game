@@ -99,7 +99,7 @@ const redButton = document.getElementById('red-flag');
 const greenButton = document.getElementById('green-flag');
 const nextButton = document.getElementById('next-btn');
 
-const roundInfo = document.getElementsByClassName('round-info');
+const roundInfo = document.querySelector('.round-info');
 
 
 //shuffle quotes, display first 10
@@ -130,15 +130,15 @@ start = () => {
     score = 0;
     mistakes = 0;
     nextButton.style.display = "none";
-    showQuote();
+    showQuestion();
 }
 
-showQuote = () => {
+showQuestion = () => {
     if(currentIndex > 10 || mistakes >= 4) {
         endGame();
         return;
     }
-    let currentQuestion = selectedQuotes[currentIndex];
+    currentQuestion = selectedQuotes[currentIndex];
     let round = currentIndex + 1;
     roundInfo.innerHTML = `Round ${round} of 10`;
     quoteElement.innerHTML = currentQuestion.quote;
@@ -149,10 +149,40 @@ showQuote = () => {
 }
 
 endGame = () => {
-
+    if(mistakes >= 4) {
+        quoteElement.innerHTML = `You lose! 4 flags later and you're still saying 'he's actually a really good guy'.`;
+    } else {
+        quoteElement.innerHTML = `You win! That was healing. That was closure. That was therapy-adjacent`;
+    }
+    //add a restart button
 }
 
-nextButton.addEventListener('click', () => {
+checkAnswer = (isRed) => {
+    redButton.disabled = true;
+    greenButton.disabled = true;
+    const correct = (currentQuestion.redflag == isRed);
+    if(correct) {
+        score++;
+        //display feedback
+    } else {
+        mistakes++;
+    }
+    nextButton.style.display = "inline-block";
+}
+
+nextQuestion = () => {
+    currentIndex++;
+    showQuestion();
+}
+
+/*nextButton.addEventListener('click', () => {
     let index = Math.floor(Math.random() * questions.length)
     quoteElement.innerHTML = questions[index].quote;
-});
+});*/
+
+redButton.addEventListener('click', () => checkAnswer(true));
+greenButton.addEventListener('click', () => checkAnswer(false));
+nextButton.addEventListener('click', nextQuestion);
+
+// Start game on load
+document.addEventListener('DOMContentLoaded', start);
