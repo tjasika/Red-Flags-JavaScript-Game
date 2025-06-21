@@ -98,15 +98,15 @@ const quoteElement = document.getElementById('quote');
 const redButton = document.getElementById('red-flag');
 const greenButton = document.getElementById('green-flag');
 const nextButton = document.getElementById('next-btn');
+const restartButton = document.querySelector('.restart-btn');
 
 const roundInfo = document.querySelector('.round-info');
-
+const scoreInfo = document.querySelector('.score-info');
 
 //shuffle quotes, display first 10
+//special message for 10/10 score
 //timer bar
-//checking for correct answers:
-//redflag: true -> Red Button =  correct
-//redflag: false -> Green Button = correct
+//displaying score
 
 let currentIndex = 0;
 let score = 0;
@@ -130,17 +130,19 @@ start = () => {
     score = 0;
     mistakes = 0;
     nextButton.style.display = "none";
+    restartButton.style.display = "none";
     showQuestion();
 }
 
 showQuestion = () => {
-    if(currentIndex > 10 || mistakes >= 4) {
+    if(currentIndex >= 10 || mistakes >= 4) {
         endGame();
         return;
     }
     currentQuestion = selectedQuotes[currentIndex];
     let round = currentIndex + 1;
     roundInfo.innerHTML = `Round ${round} of 10`;
+    scoreInfo.innerHTML = `Score: ${score} / 10`;
     quoteElement.innerHTML = currentQuestion.quote;
 
     redButton.disabled = false;
@@ -154,7 +156,8 @@ endGame = () => {
     } else {
         quoteElement.innerHTML = `You win! That was healing. That was closure. That was therapy-adjacent`;
     }
-    //add a restart button
+    nextButton.style.display = "none";
+    restartButton.style.display = "inline-block";
 }
 
 checkAnswer = (isRed) => {
@@ -163,9 +166,12 @@ checkAnswer = (isRed) => {
     const correct = (currentQuestion.redflag == isRed);
     if(correct) {
         score++;
-        //display feedback
+        let index = Math.floor(Math.random() * positiveFeedbacks.length)
+        quoteElement.innerHTML = positiveFeedbacks[index];
     } else {
         mistakes++;
+        let index = Math.floor(Math.random() * negativeFeedbacks.length)
+        quoteElement.innerHTML = negativeFeedbacks[index];
     }
     nextButton.style.display = "inline-block";
 }
@@ -175,14 +181,9 @@ nextQuestion = () => {
     showQuestion();
 }
 
-/*nextButton.addEventListener('click', () => {
-    let index = Math.floor(Math.random() * questions.length)
-    quoteElement.innerHTML = questions[index].quote;
-});*/
-
 redButton.addEventListener('click', () => checkAnswer(true));
 greenButton.addEventListener('click', () => checkAnswer(false));
 nextButton.addEventListener('click', nextQuestion);
+restartButton.addEventListener('click', start);
 
-// Start game on load
 document.addEventListener('DOMContentLoaded', start);
