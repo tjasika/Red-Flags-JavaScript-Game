@@ -76,10 +76,13 @@ const positiveFeedbacks = [
     `Protecting your peace like a pro`,
     `A queen never settles for less`,
     `The group chat would agree`,
-    `We've all met that guy`,
     `Icon behaviour`,
     `We don't chase, we choose`,
-    `You didn’t fall for it — growth!`
+    `You didn’t fall for it — growth!`,
+    `Power move!`,
+    `You ate`,
+    `Correct and hot`,
+    `Stunning decision`
 ];
 
 const negativeFeedbacks = [
@@ -91,7 +94,9 @@ const negativeFeedbacks = [
     `He <i>literally</i> said that to six other women this week`,
     `And now you’re explaining basic empathy... again`,
     `And just like that, you're writing him a paragraph`,
-    `I thought we were past that`
+    `I thought we were past that`,
+    `Honey, no...`,
+    `The math is not mathing`
 ];
 
 const quoteElement = document.getElementById('quote');
@@ -145,6 +150,8 @@ showQuestion = () => {
     scoreInfo.innerHTML = `Score: ${score} / 10`;
     quoteElement.innerHTML = currentQuestion.quote;
 
+    quoteElement.classList.remove('incorrect');
+    quoteElement.classList.remove('correct');
     redButton.disabled = false;
     greenButton.disabled = false;
     redButton.style.display = "inline-block";
@@ -155,8 +162,10 @@ showQuestion = () => {
 
 endGame = () => {
     if(mistakes >= 4) {
+        //quoteElement.classList.add('incorrect');
         quoteElement.innerHTML = `You lose! 4 flags later and you're still saying 'he's actually a really good guy'.`;
     } else {
+        //quoteElement.classList.add('correct');
         quoteElement.innerHTML = `You win! You scored ${score} / 10`;
     }
     nextButton.style.display = "none";
@@ -173,10 +182,14 @@ checkAnswer = (isRed) => {
         score++;
         let index = Math.floor(Math.random() * positiveFeedbacks.length);
         feedback.innerHTML = positiveFeedbacks[index];
+        quoteElement.classList.add('correct');
+        quoteElement.innerHTML = `Correct!`;
     } else {
         mistakes++;
         let index = Math.floor(Math.random() * negativeFeedbacks.length);
         feedback.innerHTML = negativeFeedbacks[index];
+        quoteElement.classList.add('incorrect');
+        quoteElement.innerHTML = `Inorrect!`;
     }
 
     feedback.style.display = "block";

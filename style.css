@@ -286,3 +286,17 @@ body {
   font-size: 15px;
   color: var(--color2);
 }
+
+.correct {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Fraunces";
+    color: var(--color3);
+}
+
+.incorrect {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Fraunces";
+    color: var(--color2);
+}
