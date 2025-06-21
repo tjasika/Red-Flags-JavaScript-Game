@@ -131,23 +131,44 @@ body {
 
 #next-btn {
     width: 10%;
-    color: #fff8f5;
+    color: var(--color4);
     border-radius: 15px;
-    border: 2px solid #fff8f5;
     padding: 5px;
-    background-color: #FFC2C2;
-    font-weight: 800;
+    border: none;
+    background-color: var(--color2);
+    font-weight: 500;
 }
 
 #next-btn:hover {
     cursor: pointer;
-    background-color: #fff8f5cb;
+    background-color:#ff2c2caa;
     color: var(--color1);
 }
 
 .restart {
     display: flex;
     justify-content: center;
+}
+
+.restart-btn {
+    display: none;
+    background-color: var(--color4);
+    background-color: var(--color2);
+    width: 10%;
+    color: var(--color4);
+    border-radius: 15px;
+    padding: 5px;
+    border: none;
+    font-weight: 500;
+    padding: 15px;
+    width: 30%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.restart-btn:hover {
+    cursor: pointer;
+    background-color:#ff2c2caa;
 }
 
 /*Landing Page*/
@@ -271,7 +292,7 @@ body {
   display: none;
   position: fixed;
   top: 40%;
-  left: 65%;
+  left: 68%;
   transform: translateX(-50%);
   z-index: 9999;
   background: white;
@@ -280,7 +301,7 @@ body {
   border-radius: 12px;
   font-size: 1.2rem;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  max-width: 60%;
+  width: 15%;
   text-align: center;
   animation: fadeIn 0.3s ease-out;
   font-size: 15px;

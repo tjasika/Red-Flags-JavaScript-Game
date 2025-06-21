@@ -171,6 +171,7 @@ endGame = () => {
     nextButton.style.display = "none";
     redButton.style.display = "none";
     greenButton.style.display = "none";
+    scoreInfo.innerHTML = `Score: ${score} / 10`;
     restartButton.style.display = "inline-block";
 }
 
