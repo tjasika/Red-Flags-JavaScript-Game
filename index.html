@@ -2,10 +2,58 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=ž, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Red Flags</title>
     </head>
     <body>
-        
+        <div class="main-container" id="landing-main-container">
+            <div class="landing-container">
+                <h1 id="main-title">Red Flags</h1>
+                <div class="buttons-container">
+                    <button class="start-btn"><a href=game.html>Play</a></button>
+                    <button class="how-to">How To Play</button>
+                </div>
+            </div>  
+        </div>
+
+        <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="close">&times;</span>
+            <h2>How To Play</h2>
+            <p>
+                <b>
+                Because you’ve already played the relationship version — and lost.<br>
+                4 mistakes and it's over. Sound familiar?
+                </b>
+            </p>
+            <p>
+                You’ll see 10 quotes.<br>
+                Decide if it’s a red flag or a green flag.<br>
+                You’ve got 10 seconds per quote and 4 lives total.<br>
+
+                Too many mistakes and it’s over — and no, he’s not going to change this time either.
+            </p>
+        </div>
+    </div>
+    <script>
+        const openBtn = document.querySelector(".how-to");
+        const modal = document.getElementById("modal");
+        const closeBtn = document.getElementById("closeModalBtn");
+
+        openBtn.onclick = () => {
+            modal.style.visibility = "visible";
+        };
+
+        closeBtn.onclick = () => {
+            modal.style.visibility = "hidden";
+        };
+
+        window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.visibility = "hidden";
+        }
+        };
+    </script>    
     </body>
 </html>

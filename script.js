@@ -95,6 +95,8 @@ const negativeFeedbacks = [
 ];
 
 const quoteElement = document.getElementById('quote');
+const feedback = document.getElementById('feedback');
+
 const redButton = document.getElementById('red-flag');
 const greenButton = document.getElementById('green-flag');
 const nextButton = document.getElementById('next-btn');
@@ -103,10 +105,8 @@ const restartButton = document.querySelector('.restart-btn');
 const roundInfo = document.querySelector('.round-info');
 const scoreInfo = document.querySelector('.score-info');
 
-//shuffle quotes, display first 10
 //special message for 10/10 score
 //timer bar
-//displaying score
 
 let currentIndex = 0;
 let score = 0;
@@ -125,7 +125,7 @@ shuffle = (array) => {
 
 start = () => {
     shuffle(questions);
-    selectedQuotes = questions.slice(0, 10); // Take only 10
+    selectedQuotes = questions.slice(0, 10);
     currentIndex = 0;
     score = 0;
     mistakes = 0;
@@ -147,6 +147,9 @@ showQuestion = () => {
 
     redButton.disabled = false;
     greenButton.disabled = false;
+    redButton.style.display = "inline-block";
+    greenButton.style.display = "inline-block"
+    feedback.style.display = "none";
     nextButton.style.display = "none";
 }
 
@@ -154,9 +157,11 @@ endGame = () => {
     if(mistakes >= 4) {
         quoteElement.innerHTML = `You lose! 4 flags later and you're still saying 'he's actually a really good guy'.`;
     } else {
-        quoteElement.innerHTML = `You win! That was healing. That was closure. That was therapy-adjacent`;
+        quoteElement.innerHTML = `You win! You scored ${score} / 10`;
     }
     nextButton.style.display = "none";
+    redButton.style.display = "none";
+    greenButton.style.display = "none";
     restartButton.style.display = "inline-block";
 }
 
@@ -166,13 +171,20 @@ checkAnswer = (isRed) => {
     const correct = (currentQuestion.redflag == isRed);
     if(correct) {
         score++;
-        let index = Math.floor(Math.random() * positiveFeedbacks.length)
-        quoteElement.innerHTML = positiveFeedbacks[index];
+        let index = Math.floor(Math.random() * positiveFeedbacks.length);
+        feedback.innerHTML = positiveFeedbacks[index];
     } else {
         mistakes++;
-        let index = Math.floor(Math.random() * negativeFeedbacks.length)
-        quoteElement.innerHTML = negativeFeedbacks[index];
+        let index = Math.floor(Math.random() * negativeFeedbacks.length);
+        feedback.innerHTML = negativeFeedbacks[index];
     }
+
+    feedback.style.display = "block";
+
+    setTimeout(() => {
+        feedback.style.display = "none";
+    }, 1500);
+
     nextButton.style.display = "inline-block";
 }
 
