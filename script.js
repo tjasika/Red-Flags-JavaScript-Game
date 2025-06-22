@@ -110,14 +110,40 @@ const restartButton = document.querySelector('.restart-btn');
 const roundInfo = document.querySelector('.round-info');
 const scoreInfo = document.querySelector('.score-info');
 
-//special message for 10/10 score
-//timer bar
-
 let currentIndex = 0;
 let score = 0;
 let mistakes = 0;
 let currentQuestion = null;
 let selectedQuotes = [];
+
+let timerInterval;
+let timeLeft = 100;
+let timerBar = document.getElementById('progress-fill');
+
+startTimer = (duration = 5) => {
+    clearInterval(timerInterval);
+    timeLeft = 100;
+    const intervalTime = 100;
+    const decrement = 100 / (duration * 1000 / intervalTime);
+
+    timerInterval = setInterval(() => {
+        timeLeft -= decrement;
+        if(timeLeft <= 0) {
+            timeLeft = 0;
+            clearInterval(timerInterval);
+            handleTimeOut();
+        }
+        timerBar.style.width = `${timeLeft}%`;
+    }, intervalTime)
+}
+
+handleTimeOut = () => {
+    mistakes++;
+    redButton.disabled = true;
+    greenButton.disabled = true;
+    nextButton.style.display = 'inline-block';
+    quoteElement.innerHTML = `Time Out!`;
+}
 
 shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) { 
@@ -158,15 +184,20 @@ showQuestion = () => {
     greenButton.style.display = "inline-block"
     feedback.style.display = "none";
     nextButton.style.display = "none";
+    startTimer();
 }
 
 endGame = () => {
     if(mistakes >= 4) {
-        //quoteElement.classList.add('incorrect');
-        quoteElement.innerHTML = `You lose! 4 flags later and you're still saying 'he's actually a really good guy'.`;
+       //add better styling!
+        quoteElement.innerHTML = `You lose! <br> 4 flags later and you're still saying 'he's actually a really good guy'.`;
     } else {
-        //quoteElement.classList.add('correct');
-        quoteElement.innerHTML = `You win! You scored ${score} / 10`;
+        if(score == 10) {
+            quoteElement.innerHTML = `10/10! <br> Not a single red flag made it past you. Iconic.`
+        } else {
+            quoteElement.innerHTML = `You win! <br> You scored ${score} / 10`;
+        }
+        
     }
     nextButton.style.display = "none";
     redButton.style.display = "none";
@@ -176,6 +207,7 @@ endGame = () => {
 }
 
 checkAnswer = (isRed) => {
+    clearInterval(timerInterval);
     redButton.disabled = true;
     greenButton.disabled = true;
     const correct = (currentQuestion.redflag == isRed);
