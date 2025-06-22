@@ -8,3 +8,6 @@ Players are shown a random quote and must quickly determine if it represents a '
 
 ### Features I still need to add:
 - Displaying lives
+
+### A screenshot of the project
+![Screenshot of the project interface](assets/image.png)
