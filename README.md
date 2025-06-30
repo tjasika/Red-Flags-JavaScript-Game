@@ -7,9 +7,9 @@ The game was made purely for fun, and to help me improve my skills in JavaScript
 Players are shown a random quote and must quickly determine if it represents a 'red flag' or a 'green flag'. They have 10 seconds to make each decision. Correct answers earn 1 point, while incorrect answers deduct it. The game ends after 4 incorrect responses. After each choice, players receive immediate feedback indicating whether their answer was correct. They can see the instructions on the landing page.
 
 ### Features I still have to add:
-[x] timer bar
-[] displaying lives
-[] format feedbacks
+- [x] timer bar
+- [] displaying lives
+- [] format feedbacks
 
 
 ### A screenshot of the project:
