@@ -14,5 +14,5 @@ Players are shown a random quote and must quickly determine if it represents a '
 
 ### A screenshot of the project:
 ![Screenshot of the project interface](assets/image1.png)
-![Screenshot of the project interface](assets/image2.png)
+![Screenshot of the project interface](assets/image.png)
 
