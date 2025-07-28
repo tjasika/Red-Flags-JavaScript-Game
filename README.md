@@ -8,7 +8,7 @@ Players are shown a random quote and must quickly determine if it represents a '
 
 ### Features I still have to add:
 - [x] timer bar
-- [ ] displaying lives
+- [x] displaying lives
 - [ ] format feedbacks
 
 
