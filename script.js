@@ -219,6 +219,8 @@ checkAnswer = (isRed) => {
         quoteElement.innerHTML = `Correct!`;
     } else {
         mistakes++;
+        const lives = document.querySelectorAll(".dot");
+        lives[mistakes - 1].style.opacity = 0.5;
         let index = Math.floor(Math.random() * negativeFeedbacks.length);
         feedback.innerHTML = negativeFeedbacks[index];
         quoteElement.classList.add('incorrect');
