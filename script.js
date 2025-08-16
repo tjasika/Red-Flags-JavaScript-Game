@@ -139,6 +139,8 @@ startTimer = (duration = 5) => {
 
 handleTimeOut = () => {
     mistakes++;
+    const lives = document.querySelectorAll(".dot");
+    lives[mistakes - 1].style.opacity = 0.5;
     redButton.disabled = true;
     greenButton.disabled = true;
     nextButton.style.display = 'inline-block';
